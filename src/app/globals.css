@@ -1,0 +1,410 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   THEME SYSTEM
+   Semantic values live in :root / .theme-* scopes and are mapped into
+   Tailwind with `inline`, so one utility (e.g. `text-ink`) resolves to a
+   different value per theme. Swapping a theme = swapping a class.
+   ========================================================================== */
+
+:root,
+.theme-maya {
+  --c-bg: #f7f2ea;
+  --c-surface: #fffdfa;
+  --c-ink: #22201d;
+  --c-muted: #6b6259;
+  --c-line: #e3dace;
+  --c-primary: #1e3a34;
+  --c-primary-soft: #2f5349;
+  --c-secondary: #a85f45;
+  --c-accent: #c9975b;
+
+  --c-font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --c-font-body: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Values below are sampled from the live source template, not eyeballed. */
+.theme-conejo {
+  --c-bg: #f6f4ee;
+  --c-surface: #ffffff;
+  --c-sand: #e3d9ca;
+  --c-ink: #2b2b2b;
+  --c-muted: #515151;
+  --c-line: #e3dfd9;
+  --c-primary: #2b2b2b;
+  --c-primary-soft: #4a4a4a;
+  --c-secondary: #86b3b3;
+  --c-accent: #86b3b3;
+  --c-on-dark: #ffffff;
+  --c-on-dark-muted: #bdbdbd;
+
+  --c-font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+  --c-font-body: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --c-font-script: var(--font-caveat), cursive;
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-sand: var(--c-sand, var(--c-surface-2));
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-primary: var(--c-primary);
+  --color-primary-soft: var(--c-primary-soft);
+  --color-secondary: var(--c-secondary);
+  --color-accent: var(--c-accent);
+  --color-on-dark: var(--c-on-dark, #fff);
+  --color-on-dark-muted: var(--c-on-dark-muted, #b9b0a6);
+
+  --font-display: var(--c-font-display);
+  --font-body: var(--c-font-body);
+  --font-script: var(--c-font-script, cursive);
+
+  --breakpoint-xs: 30rem;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  border-color: var(--c-line);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+.theme-root {
+  background-color: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--c-font-body);
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-root {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-secondary);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--c-primary);
+  color: var(--c-bg);
+}
+
+/* ==========================================================================
+   TYPOGRAPHY PRIMITIVES
+   ========================================================================== */
+
+.display {
+  font-family: var(--c-font-display);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.display em {
+  font-style: italic;
+}
+
+/* Type scale measured from the source template at a 1440px viewport:
+   H1 59.9/75.2 · H2 47.8/61.9 · H3 39.2/51.8 · H4 27.1/36.9, all -0.01em. */
+.h1 {
+  font-family: var(--c-font-display);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 4.16vw, 4.4rem);
+  line-height: 1.254;
+  letter-spacing: -0.01em;
+}
+
+.h2 {
+  font-family: var(--c-font-display);
+  font-weight: 300;
+  font-size: clamp(1.95rem, 3.32vw, 3.5rem);
+  line-height: 1.293;
+  letter-spacing: -0.01em;
+}
+
+.h3 {
+  font-family: var(--c-font-display);
+  font-weight: 300;
+  font-size: clamp(1.55rem, 2.72vw, 2.9rem);
+  line-height: 1.322;
+  letter-spacing: -0.01em;
+}
+
+.h4 {
+  font-family: var(--c-font-display);
+  font-weight: 300;
+  font-size: clamp(1.2rem, 1.88vw, 2rem);
+  line-height: 1.36;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--c-font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+.lede {
+  font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.3125rem);
+  line-height: 1.6;
+}
+
+.body-copy {
+  line-height: 1.75;
+}
+
+/* The handwritten accent lifted from the source template. */
+.script {
+  font-family: var(--c-font-script, cursive);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 0.7;
+  font-size: 1em;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.theme-conejo .script {
+  font-weight: 600;
+  color: var(--c-secondary);
+}
+
+.theme-maya .script {
+  font-family: var(--c-font-display);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  font-size: 1em;
+  line-height: 1;
+  color: var(--c-secondary);
+}
+
+/* ==========================================================================
+   INTERACTION PRIMITIVES
+   ========================================================================== */
+
+/* Underline that wipes in from the left. */
+.line-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.35em;
+}
+
+.line-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-link:hover::after,
+.line-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Nav item with an underline that grows from the left. */
+.nav-item {
+  position: relative;
+}
+
+.nav-item::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  margin-top: 5px;
+  transition: width 0.4s ease;
+}
+
+.nav-item:hover::after,
+.nav-item:focus-visible::after,
+.nav-item[data-active="true"]::after {
+  width: 100%;
+}
+
+/* Primary action: transparent with a wiping rule, as in the source. */
+.btn-line {
+  position: relative;
+  display: inline-block;
+  padding: 0.85em 0.2em;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  isolation: isolate;
+}
+
+.btn-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-line:hover::before,
+.btn-line:focus-visible::before {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Horizontal divider used between expertise pills. */
+.rule-dot {
+  display: inline-block;
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  vertical-align: middle;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line-link::after,
+  .btn-line::before {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   ART PANELS
+   Abstract, palette-driven compositions used in place of stock photography.
+   Each variant maps to a service so imagery stays intentional.
+   ========================================================================== */
+
+.art {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 120% at 50% 0%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
+  z-index: 1;
+}
+
+.theme-maya .art-glow {
+  background: linear-gradient(150deg, var(--c-primary) 0%, #264a41 45%, var(--c-secondary) 100%);
+}
+
+.theme-maya .art-ember {
+  background: linear-gradient(160deg, var(--c-secondary) 0%, #8a4a34 55%, var(--c-primary) 100%);
+}
+
+.theme-maya .art-sand {
+  background: linear-gradient(140deg, var(--c-accent) 0%, #b5823f 50%, var(--c-primary) 100%);
+}
+
+.theme-maya .art-tide {
+  background: linear-gradient(200deg, #2f5349 0%, var(--c-primary) 40%, #1a302b 100%);
+}
+
+/* Soft concentric "breathing" rings — grounding / anxiety. */
+.art-rings {
+  position: absolute;
+  inset: -25%;
+  background-image: repeating-radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 253, 250, 0.16) 0 1.5px,
+    transparent 1.5px 34px
+  );
+  border-radius: 50%;
+}
+
+/* Rising arcs — momentum, work, recovery. */
+.art-arcs span {
+  position: absolute;
+  left: 50%;
+  bottom: -55%;
+  width: 130%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 253, 250, 0.18);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.art-arcs span:nth-child(1) {
+  bottom: -60%;
+}
+.art-arcs span:nth-child(2) {
+  bottom: -78%;
+}
+.art-arcs span:nth-child(3) {
+  bottom: -96%;
+}
+
+/* Layered strata — safety, stability, structure. */
+.art-strata span {
+  position: absolute;
+  left: -10%;
+  width: 120%;
+  height: 34%;
+  border-radius: 999px;
+  background: rgba(255, 253, 250, 0.07);
+}
+
+.art-strata span:nth-child(1) {
+  top: 22%;
+  transform: rotate(-6deg);
+}
+.art-strata span:nth-child(2) {
+  top: 44%;
+  transform: rotate(4deg);
+}
+.art-strata span:nth-child(3) {
+  top: 66%;
+  transform: rotate(-2deg);
+}
+
+/* Soft vertical light — calm, natural light from a window. */
+.art-light {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    100deg,
+    rgba(255, 253, 250, 0) 30%,
+    rgba(255, 253, 250, 0.22) 46%,
+    rgba(255, 253, 250, 0) 60%
+  );
+}
