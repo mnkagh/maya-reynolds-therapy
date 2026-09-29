@@ -1,4 +1,3 @@
-import { Container } from "@/components/ui/Container";
 import { hero } from "@/content/conejo";
 import { Plate } from "./Plate";
 

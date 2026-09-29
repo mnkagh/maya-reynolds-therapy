@@ -1,4 +1,3 @@
-import { Container } from "@/components/ui/Container";
 import { ctaBand } from "@/content/conejo";
 import { Plate } from "./Plate";
 
