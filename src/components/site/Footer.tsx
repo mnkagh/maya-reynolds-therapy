@@ -63,19 +63,6 @@ export function Footer() {
             <address className="mt-5 space-y-2.5 text-[0.95rem] not-italic">
               <div>{brand.address}</div>
               <div>{brand.cityStateZip}</div>
-              <div className="pt-1">
-                <a href={`mailto:${brand.email}`} className="line-link">
-                  {brand.email}
-                </a>
-              </div>
-              <div>
-                <a
-                  href={`tel:${brand.phone.replace(/\D/g, "")}`}
-                  className="line-link"
-                >
-                  {brand.phone}
-                </a>
-              </div>
             </address>
           </div>
 

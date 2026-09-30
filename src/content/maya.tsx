@@ -12,8 +12,6 @@ export const brand = {
   location: "Santa Monica, California",
   address: "123th Street 45 W",
   cityStateZip: "Santa Monica, CA 90401",
-  email: "hello@dr-mayareynolds.com",
-  phone: "(310) 555-0148",
   serving:
     "Serving Santa Monica, Pacific Palisades, Brentwood & West LA — with telehealth across California",
 };

@@ -41,15 +41,6 @@ export function CtaBand() {
               >
                 {ctaBand.cta}
               </a>
-              <p className="mt-5 text-[0.9rem] text-[var(--c-bg)]/55">
-                Or reach me directly at{" "}
-                <a
-                  href="mailto:hello@dr-mayareynolds.com"
-                  className="line-link text-[var(--c-bg)]/80"
-                >
-                  hello@dr-mayareynolds.com
-                </a>
-              </p>
             </div>
           </div>
         </div>
