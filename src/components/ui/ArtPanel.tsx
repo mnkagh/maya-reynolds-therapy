@@ -26,20 +26,8 @@ export function ArtPanel({
       className={`art art-${tone} ${className}`}
     >
       {variant === "rings" && <span className="art-rings" aria-hidden />}
-      {variant === "arcs" && (
-        <span className="art-arcs" aria-hidden>
-          <span />
-          <span />
-          <span />
-        </span>
-      )}
-      {variant === "strata" && (
-        <span className="art-strata" aria-hidden>
-          <span />
-          <span />
-          <span />
-        </span>
-      )}
+      {variant === "arcs" && <span className="art-arcs" aria-hidden />}
+      {variant === "strata" && <span className="art-strata" aria-hidden />}
       {variant === "light" && <span className="art-light" aria-hidden />}
     </div>
   );

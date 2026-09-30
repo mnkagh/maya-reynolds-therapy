@@ -36,7 +36,7 @@ export function CtaBand() {
 
             <div className="lg:col-span-5 lg:text-right">
               <a
-                href="#top"
+                href="#contact"
                 className="inline-block rounded-full bg-[var(--c-bg)] px-9 py-4 text-[0.95rem] font-medium text-[var(--c-primary)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--c-accent)] hover:text-[var(--c-primary)]"
               >
                 {ctaBand.cta}

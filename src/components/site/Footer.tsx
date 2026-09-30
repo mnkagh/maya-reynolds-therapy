@@ -98,21 +98,11 @@ export function Footer() {
 
         <p className="mt-14 text-[0.9rem] text-muted italic">{brand.serving}</p>
 
-        <div className="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-[0.85rem] text-muted sm:flex-row sm:items-center sm:gap-6">
-          <a href="#" className="line-link">
-            Terms
-          </a>
-          <a href="#" className="line-link">
-            Privacy Policy
-          </a>
-          <a href="#" className="line-link">
-            Disclaimer
-          </a>
-          <span className="sm:ml-auto">
-            <Link href="/clone" className="line-link">
-              View the Part 1 clone
-            </Link>
-          </span>
+        <div className="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-[0.85rem] text-muted sm:flex-row sm:items-center sm:justify-between">
+          <span>© 2026 Dr. Maya Reynolds, PsyD · Santa Monica, California</span>
+          <Link href="/clone" className="line-link">
+            View the Part 1 clone
+          </Link>
         </div>
       </Container>
     </footer>

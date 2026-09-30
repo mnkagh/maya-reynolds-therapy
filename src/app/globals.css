@@ -319,9 +319,9 @@ html {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    120% 120% at 50% 0%,
-    transparent 40%,
-    rgba(0, 0, 0, 0.28) 100%
+    130% 110% at 50% 0%,
+    transparent 52%,
+    rgba(0, 0, 0, 0.16) 100%
   );
   z-index: 1;
 }
@@ -342,71 +342,52 @@ html {
   background: linear-gradient(200deg, #2f5349 0%, var(--c-primary) 40%, #1a302b 100%);
 }
 
-/* Soft concentric "breathing" rings — grounding / anxiety. */
+/* Concentric breathing rings — grounding, calm, anxiety. */
 .art-rings {
   position: absolute;
-  inset: -25%;
+  inset: -32%;
   background-image: repeating-radial-gradient(
-    circle at 50% 50%,
-    rgba(255, 253, 250, 0.16) 0 1.5px,
-    transparent 1.5px 34px
+    circle at 50% 46%,
+    rgba(255, 253, 250, 0.34) 0 2px,
+    transparent 2px 48px
   );
   border-radius: 50%;
 }
 
-/* Rising arcs — momentum, work, recovery. */
-.art-arcs span {
+/* Rising arcs — momentum, recovery, a horizon. */
+.art-arcs {
   position: absolute;
-  left: 50%;
-  bottom: -55%;
-  width: 130%;
-  aspect-ratio: 1;
-  border: 1px solid rgba(255, 253, 250, 0.18);
-  border-radius: 50%;
-  transform: translateX(-50%);
-}
-
-.art-arcs span:nth-child(1) {
-  bottom: -60%;
-}
-.art-arcs span:nth-child(2) {
-  bottom: -78%;
-}
-.art-arcs span:nth-child(3) {
-  bottom: -96%;
+  inset: 0;
+  background-image: repeating-radial-gradient(
+    circle at 50% 128%,
+    rgba(255, 253, 250, 0.32) 0 2px,
+    transparent 2px 56px
+  );
 }
 
 /* Layered strata — safety, stability, structure. */
-.art-strata span {
+.art-strata {
   position: absolute;
-  left: -10%;
-  width: 120%;
-  height: 34%;
-  border-radius: 999px;
-  background: rgba(255, 253, 250, 0.07);
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 253, 250, 0.2), rgba(255, 253, 250, 0.2)),
+    linear-gradient(rgba(255, 253, 250, 0.13), rgba(255, 253, 250, 0.13)),
+    linear-gradient(rgba(255, 253, 250, 0.08), rgba(255, 253, 250, 0.08));
+  background-size: 130% 22%, 130% 22%, 130% 22%;
+  background-position: -15% 18%, -15% 46%, -15% 74%;
+  background-repeat: no-repeat;
 }
 
-.art-strata span:nth-child(1) {
-  top: 22%;
-  transform: rotate(-6deg);
-}
-.art-strata span:nth-child(2) {
-  top: 44%;
-  transform: rotate(4deg);
-}
-.art-strata span:nth-child(3) {
-  top: 66%;
-  transform: rotate(-2deg);
-}
-
-/* Soft vertical light — calm, natural light from a window. */
+/* Window light — calm, clarity, a quiet room. */
 .art-light {
   position: absolute;
   inset: 0;
   background-image: linear-gradient(
     100deg,
-    rgba(255, 253, 250, 0) 30%,
-    rgba(255, 253, 250, 0.22) 46%,
-    rgba(255, 253, 250, 0) 60%
+    rgba(255, 253, 250, 0) 20%,
+    rgba(255, 253, 250, 0.3) 38%,
+    rgba(255, 253, 250, 0.46) 50%,
+    rgba(255, 253, 250, 0.3) 62%,
+    rgba(255, 253, 250, 0) 80%
   );
 }
