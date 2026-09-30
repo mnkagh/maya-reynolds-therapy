@@ -108,8 +108,43 @@ export function Header() {
         </div>
 
         {open ? (
-          <div className="border-t border-line bg-[var(--c-bg)] lg:hidden">
-            <nav aria-label="Mobile" className="px-6 pb-8 sm:px-10">
+          <div
+            id="maya-mobile-nav"
+            className="fixed inset-0 z-50 flex flex-col bg-[var(--c-bg)] lg:hidden"
+          >
+            <div className="flex items-center justify-between border-b border-line px-[5vw] py-5">
+              <span className="flex items-center gap-3">
+                <span
+                  aria-hidden
+                  className="relative grid size-10 shrink-0 place-items-center rounded-full border border-ink/20"
+                >
+                  <span
+                    aria-hidden
+                    className="absolute bottom-[6px] h-[7px] w-[7px] rounded-full"
+                    style={{ background: "var(--c-secondary)" }}
+                  />
+                </span>
+                <span className="display text-[1.15rem] leading-none">
+                  Dr. Maya Reynolds
+                </span>
+              </span>
+
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+                className="flex items-center gap-2.5 text-[0.9rem]"
+              >
+                Close
+                <span aria-hidden className="flex h-3 w-5 flex-col justify-between">
+                  <span className="h-px w-full bg-current" />
+                  <span className="h-px w-full bg-current" />
+                  <span className="h-px w-full bg-current" />
+                </span>
+              </button>
+            </div>
+
+            <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-[5vw] py-4">
               <ul>
                 {nav.map((item) => {
                   const isOpen = expanded === item.label;

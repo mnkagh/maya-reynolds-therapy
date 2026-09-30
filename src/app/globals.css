@@ -16,7 +16,9 @@
   --c-line: #e3dace;
   --c-primary: #1e3a34;
   --c-primary-soft: #2f5349;
-  --c-secondary: #a85f45;
+  /* Deepened from #a85f45: the brighter terracotta measured 4.33:1 on the
+     oatmilk surface, just under the 4.5:1 WCAG AA floor for small text. */
+  --c-secondary: #8c4229;
   --c-accent: #c9975b;
 
   --c-font-display: var(--font-fraunces), ui-serif, Georgia, serif;

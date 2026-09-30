@@ -167,6 +167,14 @@ changes are a content edit rather than a component edit.
 `aria-expanded` / `aria-controls`, decorative art hidden from the tree, and
 `prefers-reduced-motion` honoured globally.
 
+Verified with an automated pass rather than by eye: every text node checked
+against WCAG AA (the checker resolves `oklab()` and alpha-composites each
+painted ancestor, so translucent surfaces are measured correctly), heading
+levels confirmed sequential, all in-page anchors resolve, all images carry
+`alt`, no console errors, and the mobile menu confirmed to open, close and
+release its scroll lock. Reduced motion is checked *functionally* — the
+underline is sampled mid-transition and snaps to its end state immediately.
+
 ---
 
 ## Before you submit — replace these

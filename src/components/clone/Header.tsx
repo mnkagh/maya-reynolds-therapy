@@ -121,9 +121,31 @@ export function Header() {
         {open ? (
           <div
             id="clone-mobile-nav"
-            className="fixed inset-x-0 top-[var(--mobile-nav-top,0px)] bottom-0 z-40 overflow-y-auto border-t border-line bg-[var(--c-surface)] lg:hidden"
+            className="fixed inset-0 z-50 flex flex-col bg-[var(--c-surface)] lg:hidden"
           >
-            <nav aria-label="Mobile" className="px-6 py-4 sm:px-10">
+            <div className="flex items-center justify-between border-b border-line px-[5vw] py-5">
+              <span className="display text-[1.15rem] leading-none">
+                Conejo Valley
+                <br />
+                Family Counseling
+              </span>
+
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+                className="flex items-center gap-2.5 text-[0.9rem]"
+              >
+                Close
+                <span aria-hidden className="flex h-3 w-5 flex-col justify-between">
+                  <span className="h-px w-full bg-current" />
+                  <span className="h-px w-full bg-current" />
+                  <span className="h-px w-full bg-current" />
+                </span>
+              </button>
+            </div>
+
+            <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-[5vw] py-4">
               <ul>
                 {nav.map((item) => {
                   const hasFolder = "folder" in item && !!item.folder;
