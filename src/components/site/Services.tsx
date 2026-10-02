@@ -35,7 +35,7 @@ export function Services() {
             return (
               <article
                 key={item.title}
-                className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-[var(--c-surface)] transition-shadow duration-500 hover:shadow-[0_30px_70px_-46px_rgba(34,32,29,0.55)]"
+                className="tilt-3d group flex flex-col overflow-hidden rounded-3xl border border-line bg-[var(--c-surface)] hover:shadow-[0_30px_70px_-46px_rgba(34,32,29,0.55)]"
               >
                 <div className="aspect-[16/9] w-full overflow-hidden">
                   <div

@@ -22,7 +22,16 @@ export const announcement = {
 
 export const nav = [
   { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
+  {
+    label: "Services",
+    href: "/#services",
+    folder: [
+      { label: "Anxiety & Panic", href: "/#services" },
+      { label: "Trauma & EMDR", href: "/#services" },
+      { label: "Burnout & Perfectionism", href: "/#services" },
+      { label: "How I Work", href: "/#services" },
+    ],
+  },
   { label: "Our Office", href: "/#office" },
   { label: "FAQs", href: "/faqs" },
 ];

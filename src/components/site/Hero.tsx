@@ -51,7 +51,7 @@ export function Hero() {
           <div className="relative lg:col-span-6">
             <div
               aria-hidden
-              className="absolute -right-10 -top-10 hidden h-2/3 w-2/3 lg:block"
+              className="drift absolute -right-10 -top-10 hidden h-2/3 w-2/3 lg:block"
             >
               <ArtPanel tone="sand" variant="light" />
             </div>

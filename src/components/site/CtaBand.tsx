@@ -26,10 +26,10 @@ export function CtaBand() {
           <div className="relative grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <p className="eyebrow text-[var(--c-accent)]">{ctaBand.label}</p>
-              <h2 className="display mt-5 text-[clamp(2rem,4.4vw,3.5rem)] text-[var(--c-bg)]">
+              <h2 className="display mt-5 text-[clamp(2rem,4.4vw,3.5rem)] text-[var(--c-on-primary)]">
                 {ctaBand.heading}
               </h2>
-              <p className="lede mt-7 max-w-xl text-[var(--c-bg)]/70">
+              <p className="lede mt-7 max-w-xl text-[var(--c-on-primary-muted)]">
                 {ctaBand.body}
               </p>
             </div>
@@ -37,7 +37,7 @@ export function CtaBand() {
             <div className="lg:col-span-5 lg:text-right">
               <a
                 href="/contact"
-                className="inline-block rounded-full bg-[var(--c-bg)] px-9 py-4 text-[0.95rem] font-medium text-[var(--c-primary)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--c-accent)] hover:text-[var(--c-primary)]"
+                className="inline-block rounded-full bg-[var(--c-on-primary)] px-9 py-4 text-[0.95rem] font-medium text-[var(--c-primary)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--c-accent)] hover:text-[var(--c-primary)]"
               >
                 {ctaBand.cta}
               </a>

@@ -21,8 +21,28 @@
   --c-secondary: #8c4229;
   --c-accent: #c9975b;
 
+  --c-on-primary: #f7f2ea;
+  --c-on-primary-muted: rgba(247, 242, 234, 0.72);
+
   --c-font-display: var(--font-fraunces), ui-serif, Georgia, serif;
   --c-font-body: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Dark mode: same semantic roles, re-valued for a dark surface. Toggled by
+   adding `.dark` to <html>; every value below is scoped under it. */
+.dark .theme-maya {
+  --c-bg: #16130f;
+  --c-surface: #1e1a16;
+  --c-ink: #ece5db;
+  --c-muted: #a89e92;
+  --c-line: #332c25;
+  --c-primary: #1e3a34;
+  --c-primary-soft: #2a4a42;
+  --c-secondary: #c07a5a;
+  --c-accent: #d4a86a;
+
+  --c-on-primary: #ece5db;
+  --c-on-primary-muted: rgba(236, 229, 219, 0.72);
 }
 
 /* Values below are sampled from the live source template, not eyeballed. */
@@ -58,6 +78,8 @@
   --color-accent: var(--c-accent);
   --color-on-dark: var(--c-on-dark, #fff);
   --color-on-dark-muted: var(--c-on-dark-muted, #b9b0a6);
+  --color-on-primary: var(--c-on-primary, #f7f2ea);
+  --color-on-primary-muted: var(--c-on-primary-muted, rgba(247, 242, 234, 0.72));
 
   --font-display: var(--c-font-display);
   --font-body: var(--c-font-body);
@@ -390,4 +412,48 @@ html {
     rgba(255, 253, 250, 0.3) 62%,
     rgba(255, 253, 250, 0) 80%
   );
+}
+
+/* ==========================================================================
+   3D INTERACTIVITY
+   Cards tilt in 3D on hover, giving the flat layout depth. The effect is
+   transform-only so it stays cheap and respects reduced-motion.
+   ========================================================================== */
+
+.tilt-3d {
+  transform-style: preserve-3d;
+  transition:
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.tilt-3d:hover {
+  transform: perspective(1200px) rotateX(3deg) rotateY(-3deg) translateY(-6px);
+}
+
+/* Soft floating accent that drifts behind the hero portrait. */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) scale(1.04);
+  }
+}
+
+.drift {
+  animation: drift 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt-3d,
+  .drift {
+    transition: none;
+    animation: none;
+  }
+  .tilt-3d:hover {
+    transform: none;
+  }
 }

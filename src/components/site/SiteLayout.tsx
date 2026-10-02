@@ -1,6 +1,7 @@
 import { AnnouncementBar } from "./Hero";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { ThemeProvider } from "./ThemeProvider";
 
 /**
  * Shared chrome for every page of the redesigned site: announcement bar,
@@ -9,11 +10,13 @@ import { Header } from "./Header";
  */
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="theme-root theme-maya flex min-h-screen flex-col bg-[var(--c-bg)]">
-      <AnnouncementBar />
-      <Header />
-      <main id="main" className="flex-1">{children}</main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="theme-root theme-maya flex min-h-screen flex-col bg-[var(--c-bg)]">
+        <AnnouncementBar />
+        <Header />
+        <main id="main" className="flex-1">{children}</main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }

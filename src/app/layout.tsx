@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Caveat, DM_Sans, Fraunces, Karla, Newsreader } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -67,7 +68,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${newsreader.variable} ${dmSans.variable} ${caveat.variable} ${fraunces.variable} ${karla.variable} antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <Script id="maya-theme-init" strategy="beforeInteractive">
+          {`try{if(localStorage.getItem('maya-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}`}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 }
