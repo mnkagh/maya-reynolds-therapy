@@ -1,4 +1,5 @@
 import Image from "next/image";
+import faqPhoto from "@assets/faq-1.jpg";
 import { Container } from "@/components/ui/Container";
 import { faqs } from "@/content/maya";
 
@@ -37,18 +38,28 @@ export function FaqsPage() {
 
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-[var(--c-surface-2)]">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl bg-[var(--c-surface-2)]">
                 <Image
-                  src="/images/maya/office-1.jpg"
-                  alt="The counselling room in the Santa Monica office — a grey sofa, warm wood floors, brick and natural light"
+                  src={faqPhoto}
+                  alt="A magnifying glass over the words “Frequently asked Questions”"
                   fill
                   sizes="(min-width: 1024px) 40vw, 90vw"
                   className="object-cover"
                 />
               </div>
-              <p className="mt-4 text-[0.85rem] text-muted italic">
-                The office in Santa Monica — a quiet, private space.
-              </p>
+              <div className="mt-6 rounded-3xl border border-line bg-[var(--c-surface)] p-7">
+                <h2 className="eyebrow text-muted">Still unsure?</h2>
+                <p className="body-copy mt-3 text-[0.95rem] text-muted">
+                  The quickest way to find out whether therapy here is right for
+                  you is a free, no-obligation consultation.
+                </p>
+                <a
+                  href="/contact"
+                  className="line-link mt-5 inline-block text-[0.9rem] font-medium text-[var(--c-secondary)]"
+                >
+                  Book a consultation
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -5,6 +5,10 @@
  * special-needs parenting — the source template uses those, her practice does not.
  */
 
+import serviceOne from "@assets/service-1.jpg";
+import serviceTwo from "@assets/service-2.jpg";
+import serviceThree from "@assets/service-3.jpg";
+
 export const brand = {
   name: "Dr. Maya Reynolds, PsyD",
   shortName: "Maya Reynolds",
@@ -122,7 +126,7 @@ export const howWeWork = {
   cta: "Book a consultation",
 };
 
-/** Three services from the profile, plus an approach card to keep the 4-up grid. */
+/** The three service areas from the profile, each with a supplied image. */
 export const services = {
   heading: "Honouring where you’ve been, and helping shape where you’re headed.",
   subheading: "Areas I work with",
@@ -130,23 +134,17 @@ export const services = {
     {
       title: "Anxiety & Panic Therapy",
       body: "For anxiety that has quietly taken over your calendar. We work on the patterns of thought underneath it and the physical tension that comes with them, using CBT and mindfulness-based tools — and EMDR when earlier experiences are keeping your nervous system on alert.",
-      art: "glow",
+      image: serviceOne,
     },
     {
       title: "Trauma Recovery with EMDR",
       body: "EMDR is a well-researched approach that helps the brain process painful memories so they stop replaying on their own schedule. I use it for both single-incident trauma and longer patterns, always moving at a pace where you feel stable, safe and in control of the work.",
-      art: "tide",
+      image: serviceTwo,
     },
     {
       title: "Burnout & Perfectionism",
       body: "For people whose exhaustion has quietly become the baseline. We look at where the pressure comes from, what your internal standards are costing you, and how to build a professional and personal life that doesn’t depend on pushing through.",
-      art: "ember",
-    },
-    {
-      title: "How I Work",
-      kicker: "CBT · EMDR · Mindfulness · Body-oriented",
-      body: "Evidence-based methods chosen to fit you, rather than the other way around. Structured enough to feel supportive, open enough to go somewhere real — with an emphasis on safety, stabilisation and helping you feel more regulated in daily life.",
-      art: "sand",
+      image: serviceThree,
     },
   ],
 };

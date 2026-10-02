@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
+import contactIcon from "@assets/contact-icon.jpg";
 import { Container } from "@/components/ui/Container";
 import { brand } from "@/content/maya";
 
@@ -119,6 +121,14 @@ export function ContactPage() {
               In-person sessions in Santa Monica, or secure telehealth from
               anywhere in California.
             </p>
+
+            <div className="mt-8 overflow-hidden rounded-3xl border border-line bg-[var(--c-surface)]">
+              <Image
+                src={contactIcon}
+                alt="Contact Dr. Maya Reynolds to book a consultation"
+                className="h-auto w-full"
+              />
+            </div>
           </div>
         </div>
       </Container>

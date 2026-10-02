@@ -1,4 +1,5 @@
 import Image from "next/image";
+import officeTwo from "@assets/office-2.jpg";
 import { Container } from "@/components/ui/Container";
 import { howWeWork } from "@/content/maya";
 
@@ -20,7 +21,7 @@ export function HowWeWork() {
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-[var(--c-surface-2)]">
               <Image
-                src="/images/maya/office-2.jpg"
+                src={officeTwo}
                 alt="The counselling room in the Santa Monica office — a grey sofa, warm wood floors, plants and a bookshelf in natural light"
                 fill
                 sizes="(min-width: 1024px) 40vw, 90vw"
@@ -33,6 +34,23 @@ export function HowWeWork() {
             <p className="lede italic">{howWeWork.lead}</p>
             <p className="body-copy mt-7 text-muted">{howWeWork.body}</p>
             <p className="body-copy mt-5 text-muted">{howWeWork.second}</p>
+
+            <div className="mt-9 flex flex-wrap gap-2.5">
+              {[
+                "Cognitive behavioural therapy (CBT)",
+                "EMDR",
+                "Mindfulness-based practice",
+                "Body-oriented techniques",
+              ].map((m) => (
+                <span
+                  key={m}
+                  className="rounded-full border border-line bg-[var(--c-surface)] px-4 py-2 text-[0.85rem] text-muted"
+                >
+                  {m}
+                </span>
+              ))}
+            </div>
+
             <a
               href="/contact"
               className="btn-line mt-9 self-start font-medium text-[var(--c-secondary)]"

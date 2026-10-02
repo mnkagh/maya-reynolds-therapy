@@ -1,14 +1,8 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { services } from "@/content/maya";
 
-const variants = {
-  glow: "rings",
-  ember: "arcs",
-  tide: "light",
-  sand: "strata",
-} as const;
-
-/** Four-up grid, as in the template — three services plus an approach card. */
+/** Three service cards, as in the brief. */
 export function Services() {
   return (
     <section
@@ -29,45 +23,36 @@ export function Services() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:mt-16 md:grid-cols-2">
-          {services.items.map((item) => {
-            const tone = item.art as keyof typeof variants;
-            return (
-              <article
-                key={item.title}
-                className="tilt-3d group flex flex-col overflow-hidden rounded-3xl border border-line bg-[var(--c-surface)] hover:shadow-[0_30px_70px_-46px_rgba(34,32,29,0.55)]"
-              >
-                <div className="aspect-[16/9] w-full overflow-hidden">
-                  <div
-                    className={`art art-${tone} h-full w-full transition-transform duration-700 group-hover:scale-105`}
-                    role="img"
-                    aria-label=""
-                  >
-                    <span className={`art-${variants[tone]}`} aria-hidden />
-                  </div>
-                </div>
+        <div className="mt-14 grid gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
+          {services.items.map((item) => (
+            <article
+              key={item.title}
+              className="tilt-3d group flex flex-col overflow-hidden rounded-3xl border border-line bg-[var(--c-surface)] hover:shadow-[0_30px_70px_-46px_rgba(34,32,29,0.55)]"
+            >
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-[var(--c-surface-2)]">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 90vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
 
-                <div className="flex flex-1 flex-col p-7 sm:p-9">
-                  {"kicker" in item && item.kicker ? (
-                    <p className="eyebrow mb-4 text-[var(--c-secondary)]">
-                      {item.kicker}
-                    </p>
-                  ) : null}
-
-                  <h3 className="display text-[1.5rem]">{item.title}</h3>
+              <div className="flex flex-1 flex-col p-7 sm:p-9">
+                <h3 className="display text-[1.5rem]">{item.title}</h3>
                   <p className="body-copy mt-4 flex-1 text-[0.95rem] text-muted">
                     {item.body}
                   </p>
-                  <a
-                    href="/contact"
-                    className="line-link mt-7 self-start text-[0.9rem] font-medium text-[var(--c-secondary)]"
-                  >
-                    Request an appointment
-                  </a>
-                </div>
-              </article>
-            );
-          })}
+                <a
+                  href="/contact"
+                  className="line-link mt-7 self-start text-[0.9rem] font-medium text-[var(--c-secondary)]"
+                >
+                  Request an appointment
+                </a>
+              </div>
+            </article>
+          ))}
         </div>
       </Container>
     </section>

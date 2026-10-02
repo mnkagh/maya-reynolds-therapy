@@ -1,4 +1,6 @@
 import Image from "next/image";
+import officeOne from "@assets/office-1.jpg";
+import officeTwo from "@assets/office-2.jpg";
 import { Container } from "@/components/ui/Container";
 import { office } from "@/content/maya";
 
@@ -17,7 +19,7 @@ export function Office() {
           <div className="lg:col-span-7">
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[var(--c-surface-2)]">
               <Image
-                src="/images/maya/office-1.jpg"
+                src={officeOne}
                 alt="The counselling room in the Santa Monica office — exposed brick, a grey sofa, a soft rug and sheer curtains filtering afternoon light"
                 fill
                 sizes="(min-width: 1024px) 56vw, 92vw"
@@ -29,7 +31,7 @@ export function Office() {
           <div className="lg:col-span-5 lg:-ml-16 lg:self-end">
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border-8 border-[var(--c-bg)] bg-[var(--c-surface-2)] shadow-[0_30px_70px_-50px_rgba(34,32,29,0.6)]">
               <Image
-                src="/images/maya/office-2.jpg"
+                src={officeTwo}
                 alt="A second view of the office — a leather chair, a glass coffee table, warm wood flooring and a low bookshelf"
                 fill
                 sizes="(min-width: 1024px) 40vw, 92vw"

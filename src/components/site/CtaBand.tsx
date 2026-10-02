@@ -1,3 +1,5 @@
+import Image from "next/image";
+import contactIcon from "@assets/contact-icon.jpg";
 import { Container } from "@/components/ui/Container";
 import { ctaBand } from "@/content/maya";
 
@@ -34,7 +36,14 @@ export function CtaBand() {
               </p>
             </div>
 
-            <div className="lg:col-span-5 lg:text-right">
+            <div className="flex flex-col items-center gap-8 lg:col-span-5 lg:items-end lg:text-right">
+              <div className="w-full max-w-xs overflow-hidden rounded-3xl bg-[var(--c-on-primary)] shadow-[0_30px_70px_-40px_rgba(34,32,29,0.7)]">
+                <Image
+                  src={contactIcon}
+                  alt="Contact Dr. Maya Reynolds to book a consultation"
+                  className="h-auto w-full"
+                />
+              </div>
               <a
                 href="/contact"
                 className="inline-block rounded-full bg-[var(--c-on-primary)] px-9 py-4 text-[0.95rem] font-medium text-[var(--c-primary)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--c-accent)] hover:text-[var(--c-primary)]"

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import portrait from "@assets/dr-maya-reynolds.png";
 import { Container } from "@/components/ui/Container";
 import { about } from "@/content/maya";
 
@@ -11,7 +12,7 @@ export function About() {
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-[var(--c-surface-2)]">
               <Image
-                src="/images/maya/dr-maya-reynolds.png"
+                src={portrait}
                 alt="Dr. Maya Reynolds, PsyD, smiling, photographed in her Santa Monica office"
                 fill
                 sizes="(min-width: 1024px) 40vw, 90vw"

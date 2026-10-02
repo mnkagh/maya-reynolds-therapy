@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import portrait from "@assets/dr-maya-reynolds.png";
 import { Container } from "@/components/ui/Container";
 import { ArtPanel } from "@/components/ui/ArtPanel";
 import { announcement } from "@/content/maya";
@@ -59,7 +60,7 @@ export function Hero() {
             <div className="relative ml-auto max-w-md lg:max-w-none">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-t-[14rem] bg-[var(--c-surface-2)]">
                 <Image
-                  src="/images/maya/dr-maya-reynolds.png"
+                  src={portrait}
                   alt="Dr. Maya Reynolds, PsyD, licensed clinical psychologist in Santa Monica, California"
                   fill
                   preload
