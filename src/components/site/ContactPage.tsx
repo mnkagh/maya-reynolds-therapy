@@ -23,7 +23,7 @@ export function ContactPage() {
       setForm((f) => ({ ...f, [key]: e.target.value }));
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-14 sm:py-16 lg:py-16">
       <Container>
         <h1 className="h1">
           Get <span className="script">in touch</span>.

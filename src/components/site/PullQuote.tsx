@@ -7,7 +7,7 @@ import { expertise, pullQuote } from "@/content/maya";
 
 export function PullQuote() {
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-12 sm:py-14 lg:py-16">
       <Container>
         <p
           data-reveal
@@ -32,7 +32,7 @@ export function Expertise() {
   const [active, setActive] = useState<string | null>(null);
 
   return (
-    <section id="areas" className="scroll-mt-28 py-20 sm:py-24">
+    <section id="areas" className="scroll-mt-28 py-12 sm:py-14 lg:py-16">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
           <div data-reveal className="lg:col-span-4">

@@ -12,7 +12,7 @@ export function Office() {
   return (
     <section
       id="office"
-      className="scroll-mt-28 overflow-hidden py-20 sm:py-28 lg:py-32"
+      className="scroll-mt-28 overflow-hidden py-14 sm:py-16 lg:py-16"
     >
       <Container>
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">

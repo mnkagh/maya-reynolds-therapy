@@ -8,30 +8,15 @@ export function Footer() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div data-reveal className="lg:col-span-5">
-            <span className="flex items-center gap-3.5">
-              <span
-                aria-hidden
-                className="relative grid size-12 shrink-0 place-items-center rounded-full border border-[var(--c-on-primary)]/30"
-              >
-                <span
-                  aria-hidden
-                  className="absolute inset-[5px] rounded-full border border-[var(--c-on-primary)]/20"
-                />
-                <span
-                  aria-hidden
-                  className="absolute bottom-[8px] h-[7px] w-[7px] rounded-full bg-[var(--c-accent)]"
-                />
+            <span className="flex flex-col leading-none">
+              <span className="display text-[1.5rem] leading-none text-[var(--c-on-primary)]">
+                {brand.name}
               </span>
-              <span className="flex flex-col leading-none">
-                <span className="display text-[1.5rem] leading-none text-[var(--c-on-primary)]">
-                  {brand.name}
-                </span>
-                <span
-                  className="eyebrow mt-2"
-                  style={{ color: "var(--c-accent)" }}
-                >
-                  {brand.role}
-                </span>
+              <span
+                className="eyebrow mt-2"
+                style={{ color: "var(--c-accent)" }}
+              >
+                {brand.role}
               </span>
             </span>
 
@@ -75,14 +60,6 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-
-            <a
-              href="/contact"
-              data-magnetic="10"
-              className="mt-8 inline-block rounded-full bg-[var(--c-on-primary)] px-6 py-3 text-[0.9rem] font-medium text-[var(--c-primary)] transition-colors hover:bg-[var(--c-accent)]"
-            >
-              Book a Consultation
-            </a>
           </div>
         </div>
 

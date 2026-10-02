@@ -7,7 +7,7 @@ export function Services() {
   return (
     <section
       id="services"
-      className="scroll-mt-28 bg-[var(--c-surface-2)] py-20 sm:py-28 lg:py-32"
+      className="scroll-mt-28 bg-[var(--c-surface-2)] py-14 sm:py-16 lg:py-16"
     >
       <Container>
         <div className="grid gap-8 lg:grid-cols-12">

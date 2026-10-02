@@ -10,7 +10,7 @@ export function Faq() {
   return (
     <section
       id="faqs"
-      className="scroll-mt-28 bg-[var(--c-surface-2)] py-20 sm:py-28"
+      className="scroll-mt-28 bg-[var(--c-surface-2)] py-14 sm:py-16 lg:py-16"
     >
       <Container>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">

@@ -20,7 +20,7 @@ export function HowWeWork() {
   return (
     <section
       id="approach"
-      className="scroll-mt-28 overflow-hidden py-20 sm:py-28 lg:py-32"
+      className="scroll-mt-28 overflow-hidden py-14 sm:py-16 lg:py-16"
     >
       <Container>
         <div data-reveal className="max-w-3xl">
@@ -30,29 +30,21 @@ export function HowWeWork() {
           </h2>
         </div>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
           <div
             data-reveal
             style={{ "--reveal-delay": "100ms" } as React.CSSProperties}
             className="flex flex-col justify-center lg:col-span-5"
           >
             <p className="lede italic">{howWeWork.lead}</p>
-            <p className="body-copy mt-7 text-muted">{howWeWork.body}</p>
-            <p className="body-copy mt-5 text-muted">{howWeWork.second}</p>
-
-            <a
-              href="/contact"
-              data-magnetic="12"
-              className="btn-line mt-9 self-start font-medium text-[var(--c-secondary)]"
-            >
-              {howWeWork.cta}
-            </a>
+            <p className="body-copy mt-6 text-muted">{howWeWork.body}</p>
+            <p className="body-copy mt-4 text-muted">{howWeWork.second}</p>
           </div>
 
           <div
             data-reveal
             style={{ "--reveal-delay": "180ms" } as React.CSSProperties}
-            className="lg:col-span-7"
+            className="flex flex-col justify-center lg:col-span-7"
           >
             <div className="flex items-end justify-between gap-6">
               <p className="eyebrow text-muted">
@@ -78,7 +70,7 @@ export function HowWeWork() {
               </div>
             </div>
 
-            <div className="scene mt-8 h-[23rem] select-none sm:h-[25rem]">
+            <div className="scene mt-6 h-[19rem] select-none sm:h-[21rem]">
               {methods.map((method, i) => {
                 const raw = (i - index + count) % count;
                 const signed = raw > count / 2 ? raw - count : raw;
@@ -91,6 +83,8 @@ export function HowWeWork() {
                 return (
                   <div
                     key={method.id}
+                    onPointerEnter={() => setIndex(i)}
+                    onClick={() => setIndex(i)}
                     className="absolute left-1/2 top-1/2 w-[min(19rem,80%)] -translate-x-1/2 -translate-y-1/2"
                     style={
                       {
@@ -105,7 +99,7 @@ export function HowWeWork() {
                   >
                     <article
                       data-tilt
-                      className="depth flex h-64 flex-col rounded-3xl border border-line bg-[var(--c-surface)] p-7 shadow-[0_30px_70px_-50px_rgba(34,32,29,0.7)]"
+                      className="depth flex h-60 cursor-pointer flex-col rounded-3xl border border-line bg-[var(--c-surface)] p-7 shadow-[0_30px_70px_-50px_rgba(34,32,29,0.7)]"
                     >
                       <p className="eyebrow text-[var(--c-secondary)]">
                         {method.abbr}
@@ -125,7 +119,7 @@ export function HowWeWork() {
               })}
             </div>
 
-            <ul className="mt-6 flex flex-wrap gap-2.5">
+            <ul className="mt-4 flex flex-wrap gap-2.5">
               {methods.map((method, i) => (
                 <li key={method.id}>
                   <button

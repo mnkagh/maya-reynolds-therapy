@@ -29,33 +29,17 @@ export function Header() {
         <div className="mx-auto flex w-full max-w-[88rem] items-center justify-between gap-6 px-6 py-5 sm:px-10 lg:px-16">
           <Link
             href="#top"
-            className="flex items-center gap-3 no-underline"
+            className="flex flex-col no-underline"
             aria-label="Dr. Maya Reynolds, PsyD — home"
           >
-            <span
-              aria-hidden
-              className="relative grid size-10 shrink-0 place-items-center rounded-full border border-ink/20"
-            >
-              <span
-                aria-hidden
-                className="absolute inset-[4px] rounded-full border border-ink/12"
-              />
-              <span
-                aria-hidden
-                className="absolute bottom-[6px] h-[7px] w-[7px] rounded-full"
-                style={{ background: "var(--c-secondary)" }}
-              />
+            <span className="display text-[1.15rem] leading-none sm:text-[1.3rem]">
+              Dr. Maya Reynolds
             </span>
-            <span className="flex flex-col leading-none">
-              <span className="display text-[1.15rem] leading-none sm:text-[1.3rem]">
-                Dr. Maya Reynolds
-              </span>
-              <span
-                className="eyebrow mt-1.5"
-                style={{ color: "var(--c-secondary)" }}
-              >
-                PsyD
-              </span>
+            <span
+              className="eyebrow mt-1.5"
+              style={{ color: "var(--c-secondary)" }}
+            >
+              PsyD
             </span>
           </Link>
 
@@ -130,20 +114,8 @@ export function Header() {
             className="fixed inset-0 z-50 flex flex-col bg-[var(--c-bg)] lg:hidden"
           >
             <div className="flex items-center justify-between border-b border-line px-[5vw] py-5">
-              <span className="flex items-center gap-3">
-                <span
-                  aria-hidden
-                  className="relative grid size-10 shrink-0 place-items-center rounded-full border border-ink/20"
-                >
-                  <span
-                    aria-hidden
-                    className="absolute bottom-[6px] h-[7px] w-[7px] rounded-full"
-                    style={{ background: "var(--c-secondary)" }}
-                  />
-                </span>
-                <span className="display text-[1.15rem] leading-none">
-                  Dr. Maya Reynolds
-                </span>
+              <span className="display text-[1.15rem] leading-none">
+                Dr. Maya Reynolds
               </span>
 
               <button

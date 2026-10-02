@@ -6,7 +6,7 @@ import { about } from "@/content/maya";
 /** Bio section — Maya’s portrait plus copy drawn straight from her profile. */
 export function About() {
   return (
-    <section id="about" className="scroll-mt-28 py-20 sm:py-28">
+    <section id="about" className="scroll-mt-28 py-14 sm:py-16 lg:py-16">
       <Container>
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">

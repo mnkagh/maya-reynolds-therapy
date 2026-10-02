@@ -5,7 +5,7 @@ import { ctaBand } from "@/content/maya";
 
 export function CtaBand() {
   return (
-    <section id="contact" className="scroll-mt-28 py-20 sm:py-28 lg:py-32">
+    <section id="contact" className="scroll-mt-28 py-14 sm:py-16 lg:py-16">
       <Container>
         <div className="relative overflow-hidden rounded-[2rem] bg-[var(--c-primary)] px-8 py-16 sm:px-14 sm:py-20 lg:px-20">
           <div
