@@ -546,58 +546,6 @@ html {
   transition-duration: 0.1s;
 }
 
-/* Custom cursor. Only mounted for fine pointers. */
-.cursor-ring,
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 90;
-  pointer-events: none;
-  border-radius: 9999px;
-  will-change: transform;
-}
-
-.cursor-ring {
-  width: 34px;
-  height: 34px;
-  margin: -17px 0 0 -17px;
-  border: 1px solid color-mix(in srgb, var(--c-secondary) 70%, transparent);
-  transition:
-    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    margin 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.35s ease,
-    opacity 0.3s ease;
-}
-
-.cursor-dot {
-  width: 5px;
-  height: 5px;
-  margin: -2.5px 0 0 -2.5px;
-  background: var(--c-secondary);
-  transition: opacity 0.3s ease;
-}
-
-.cursor-ring.is-hot {
-  width: 62px;
-  height: 62px;
-  margin: -31px 0 0 -31px;
-  background: color-mix(in srgb, var(--c-secondary) 12%, transparent);
-}
-
-.cursor-ring.is-hidden,
-.cursor-dot.is-hidden {
-  opacity: 0;
-}
-
-html.has-custom-cursor,
-html.has-custom-cursor a,
-html.has-custom-cursor button,
-html.has-custom-cursor [role="button"] {
-  cursor: none;
-}
-
 /* Reading progress along the top edge. */
 .progress-track {
   position: fixed;

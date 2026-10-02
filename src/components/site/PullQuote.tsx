@@ -62,7 +62,6 @@ export function Expertise() {
                   <button
                     key={item}
                     type="button"
-                    data-cursor
                     onPointerEnter={() => setActive(item)}
                     onPointerLeave={() => setActive(null)}
                     onFocus={() => setActive(item)}

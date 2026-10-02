@@ -24,10 +24,10 @@ export function HowWeWork() {
     >
       <Container>
         <div data-reveal className="max-w-3xl">
-          <p className="eyebrow text-[var(--c-secondary)]">{howWeWork.label}</p>
-          <h2 className="display mt-5 text-[clamp(1.875rem,3.8vw,3.25rem)]">
-            {howWeWork.heading}
+          <h2 className="display text-[clamp(2.25rem,5vw,4rem)]">
+            {howWeWork.label}.
           </h2>
+          <p className="lede mt-6 max-w-2xl text-muted">{howWeWork.heading}</p>
         </div>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
@@ -83,7 +83,6 @@ export function HowWeWork() {
                 return (
                   <div
                     key={method.id}
-                    onPointerEnter={() => setIndex(i)}
                     onClick={() => setIndex(i)}
                     className="absolute left-1/2 top-1/2 w-[min(19rem,80%)] -translate-x-1/2 -translate-y-1/2"
                     style={
@@ -98,7 +97,6 @@ export function HowWeWork() {
                     }
                   >
                     <article
-                      data-tilt
                       className="depth flex h-60 cursor-pointer flex-col rounded-3xl border border-line bg-[var(--c-surface)] p-7 shadow-[0_30px_70px_-50px_rgba(34,32,29,0.7)]"
                     >
                       <p className="eyebrow text-[var(--c-secondary)]">
@@ -112,7 +110,6 @@ export function HowWeWork() {
                           {method.note}
                         </p>
                       ) : null}
-                      <span className="glare" aria-hidden />
                     </article>
                   </div>
                 );

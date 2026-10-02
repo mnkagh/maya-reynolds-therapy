@@ -17,7 +17,6 @@ const clamp = (n: number, min: number, max: number) =>
 export function Interaction() {
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
     const root = document.documentElement;
 
@@ -90,35 +89,6 @@ export function Interaction() {
     const magnets = Array.from(
       root.querySelectorAll<HTMLElement>("[data-magnetic]"),
     );
-    const hotspots = "a, button, [role='button'], input, textarea, [data-cursor]";
-
-    let ring: HTMLElement | null = null;
-    let dot: HTMLElement | null = null;
-    let pointerX = window.innerWidth / 2;
-    let pointerY = window.innerHeight / 2;
-    let ringX = pointerX;
-    let ringY = pointerY;
-    let raf = 0;
-
-    if (fine && !reduced) {
-      root.classList.add("has-custom-cursor");
-      ring = document.createElement("div");
-      ring.className = "cursor-ring";
-      ring.setAttribute("aria-hidden", "true");
-      dot = document.createElement("div");
-      dot.className = "cursor-dot";
-      dot.setAttribute("aria-hidden", "true");
-      document.body.append(ring, dot);
-
-      const follow = () => {
-        ringX += (pointerX - ringX) * 0.18;
-        ringY += (pointerY - ringY) * 0.18;
-        if (ring) ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
-        if (dot) dot.style.transform = `translate3d(${pointerX}px, ${pointerY}px, 0)`;
-        raf = requestAnimationFrame(follow);
-      };
-      raf = requestAnimationFrame(follow);
-    }
 
     const resetTilt = (el: HTMLElement) => {
       el.style.setProperty("--rx", "0deg");
@@ -128,14 +98,6 @@ export function Interaction() {
     };
 
     const onPointerMove = (e: PointerEvent) => {
-      pointerX = e.clientX;
-      pointerY = e.clientY;
-
-      if (ring) {
-        ring.classList.remove("is-hidden");
-        dot?.classList.remove("is-hidden");
-      }
-
       for (const el of tilts) {
         const rect = el.getBoundingClientRect();
         if (
@@ -177,21 +139,6 @@ export function Interaction() {
           (((e.clientY - (rect.top + rect.height / 2)) / rect.height) * pull).toFixed(2),
         );
       }
-    };
-
-    const onOver = (e: Event) => {
-      const target = e.target as HTMLElement | null;
-      if (ring && target?.closest(hotspots)) ring.classList.add("is-hot");
-    };
-
-    const onOut = (e: Event) => {
-      const target = e.target as HTMLElement | null;
-      if (ring && target?.closest(hotspots)) ring.classList.remove("is-hot");
-    };
-
-    const onLeaveWindow = () => {
-      ring?.classList.add("is-hidden");
-      dot?.classList.add("is-hidden");
     };
 
     const onPress = (e: Event) => {
@@ -242,28 +189,18 @@ export function Interaction() {
     const parallaxRaf = requestAnimationFrame(rafScroll);
 
     window.addEventListener("pointermove", onPointerMove, { passive: true });
-    window.addEventListener("pointerover", onOver, { passive: true });
-    window.addEventListener("pointerout", onOut, { passive: true });
     window.addEventListener("pointerdown", onPress, { passive: true });
     window.addEventListener("pointerup", onRelease, { passive: true });
-    document.addEventListener("mouseleave", onLeaveWindow);
     window.addEventListener("maya:refresh", sweep);
 
     return () => {
-      cancelAnimationFrame(raf);
       cancelAnimationFrame(parallaxRaf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       window.removeEventListener("pointermove", onPointerMove);
-      window.removeEventListener("pointerover", onOver);
-      window.removeEventListener("pointerout", onOut);
       window.removeEventListener("pointerdown", onPress);
       window.removeEventListener("pointerup", onRelease);
-      document.removeEventListener("mouseleave", onLeaveWindow);
       window.removeEventListener("maya:refresh", sweep);
-      root.classList.remove("has-custom-cursor");
-      ring?.remove();
-      dot?.remove();
       root.style.removeProperty("--scroll-progress");
     };
   }, []);

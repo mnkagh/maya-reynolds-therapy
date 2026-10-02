@@ -100,7 +100,7 @@ export const about = {
 };
 
 export const howWeWork = {
-  label: "How we work",
+  label: "How I work",
   heading: "Therapy should feel like somewhere you can finally breathe.",
   lead: "The people I work with are balancing a great deal at once, and putting themselves first is often the first thing to get dropped.",
   body: "Here, your needs are the priority. I take the time to properly understand your story before we do anything with it, because no two people are the same and personalised therapy means an intentional, tailored approach. You won’t find anything ‘one-size-fits-all’ here.",

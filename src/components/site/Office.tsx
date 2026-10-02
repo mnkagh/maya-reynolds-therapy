@@ -43,10 +43,12 @@ export function Office() {
 
         <div className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
-            <p className="eyebrow text-[var(--c-secondary)]">{office.label}</p>
-            <h2 className="display mt-5 text-[clamp(1.875rem,3.6vw,3rem)]">
-              {office.heading}
+            <h2 className="display text-[clamp(2.25rem,5vw,4rem)]">
+              {office.label}.
             </h2>
+            <h3 className="display mt-5 text-[clamp(1.25rem,2.4vw,1.75rem)]">
+              {office.heading}
+            </h3>
             <p className="lede mt-8 max-w-xl">{office.body}</p>
             <p className="body-copy mt-5 max-w-xl text-muted">{office.second}</p>
           </div>
