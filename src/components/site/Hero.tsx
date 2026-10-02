@@ -34,7 +34,7 @@ export function Hero() {
 
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
               <a
-                href="#contact"
+                href="/contact"
                 className="rounded-full bg-[var(--c-primary)] px-8 py-4 text-[0.95rem] font-medium text-[var(--c-bg)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--c-primary-soft)]"
               >
                 {hero.cta}

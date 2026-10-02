@@ -34,8 +34,8 @@ export const nav = [
     ],
   },
   { label: "Our Office", href: "#office" },
-  { label: "FAQs", href: "#faqs" },
-  { label: "Contact", href: "#contact" },
+  { label: "FAQs", href: "/faqs" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const hero = {
@@ -121,7 +121,7 @@ export const howWeWork = {
   body: "Here, your needs are the priority. I take the time to properly understand your story before we do anything with it, because no two people are the same and personalised therapy means an intentional, tailored approach. You won’t find anything ‘one-size-fits-all’ here.",
   second:
     "Sometimes we will gently challenge you to look at something differently, and sometimes we will slow down and stay with a feeling. Either way, the goal is not only symptom relief — it’s insight, resilience, and a stronger relationship with yourself over time. If you’re looking for a therapist who combines practical tools with depth-oriented work, and who understands the realities of living and working in a fast-paced environment, you may be in the right place.",
-  cta: "More about my approach",
+  cta: "Book a consultation",
 };
 
 /** Three services from the profile, plus an approach card to keep the 4-up grid. */
@@ -210,11 +210,11 @@ export const footer = {
   blurb:
     "Getting started is simple. You’re welcome to come into my office in Santa Monica, or meet with me securely online from anywhere in California — whichever works best for you.",
   navigate: [
-    { label: "Home", href: "#" },
+    { label: "Home", href: "/" },
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Our Office", href: "#office" },
-    { label: "FAQs", href: "#faqs" },
-    { label: "Contact", href: "#contact" },
+    { label: "FAQs", href: "/faqs" },
+    { label: "Contact", href: "/contact" },
   ],
 };

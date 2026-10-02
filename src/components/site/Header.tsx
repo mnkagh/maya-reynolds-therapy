@@ -84,7 +84,7 @@ export function Header() {
             ))}
 
             <a
-              href="#contact"
+              href="/contact"
               className="rounded-full bg-[var(--c-primary)] px-6 py-3 text-[0.9rem] font-medium text-[var(--c-bg)] transition-transform duration-300 hover:-translate-y-0.5"
             >
               Book a Consultation
@@ -205,7 +205,7 @@ export function Header() {
               </ul>
 
               <a
-                href="#contact"
+                href="/contact"
                 onClick={() => setOpen(false)}
                 className="mt-8 block rounded-full bg-[var(--c-primary)] px-6 py-4 text-center text-[0.95rem] font-medium text-[var(--c-bg)]"
               >

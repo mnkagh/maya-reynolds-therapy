@@ -59,7 +59,7 @@ export function Services() {
                     {item.body}
                   </p>
                   <a
-                    href="#contact"
+                    href="/contact"
                     className="line-link mt-7 self-start text-[0.9rem] font-medium text-[var(--c-secondary)]"
                   >
                     Request an appointment

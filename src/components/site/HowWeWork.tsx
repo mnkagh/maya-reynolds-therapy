@@ -34,7 +34,7 @@ export function HowWeWork() {
             <p className="body-copy mt-7 text-muted">{howWeWork.body}</p>
             <p className="body-copy mt-5 text-muted">{howWeWork.second}</p>
             <a
-              href="#services"
+              href="/contact"
               className="btn-line mt-9 self-start font-medium text-[var(--c-secondary)]"
             >
               {howWeWork.cta}

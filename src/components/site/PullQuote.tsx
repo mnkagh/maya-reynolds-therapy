@@ -17,29 +17,29 @@ export function PullQuote() {
 
 export function Expertise() {
   return (
-    <section className="pb-16 pt-8 sm:pb-24 sm:pt-12">
+    <section className="py-16 sm:py-24">
       <Container>
-        <h2 className="display text-[clamp(1.5rem,2.6vw,2.25rem)]">
-          {expertise.heading}
-        </h2>
+        <div className="lg:grid lg:grid-cols-12 lg:gap-16">
+          <h2 className="h3 lg:col-span-3">
+            What I <span className="script">work with</span>
+          </h2>
 
-        <ul className="mt-9 flex max-w-5xl flex-wrap items-center gap-x-4 gap-y-3 sm:mt-12">
-          {expertise.items.map((item, i) => (
-            <li key={item} className="flex items-center gap-4">
-              <span
-                className="rounded-full border border-line bg-[var(--c-surface)] px-4 py-2 text-[0.9rem] text-muted"
-                style={{ color: "var(--c-ink)" }}
+          <ul className="mt-10 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:col-span-9 lg:mt-0 lg:grid-cols-3">
+            {expertise.items.map((item) => (
+              <li
+                key={item}
+                className="border-b border-line/70 pb-3 text-[0.95rem] leading-snug"
               >
                 {item}
-              </span>
-              {i === expertise.items.length - 1 ? (
-                <em className="display text-[1.05rem] text-[var(--c-secondary)]">
-                  {expertise.more}
-                </em>
-              ) : null}
+              </li>
+            ))}
+            <li className="border-b border-line/70 pb-3">
+              <em className="display text-[1.05rem] text-[var(--c-secondary)]">
+                {expertise.more}
+              </em>
             </li>
-          ))}
-        </ul>
+          </ul>
+        </div>
       </Container>
     </section>
   );
