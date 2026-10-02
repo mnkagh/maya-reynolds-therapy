@@ -61,24 +61,6 @@ export const intro = {
     "Wherever you’re starting from, you deserve support that respects both the difficulty of what you’ve been through and the strength it took to get here. We work on the emotional and the physical sides of what you’re experiencing, so that the change lasts outside the therapy room and into your actual life.",
 };
 
-export const whoWeHelp = {
-  heading: "Who I work with",
-  items: [
-    {
-      title: "Anxiety & Panic",
-      body: "Constant worry, panic attacks, and the feeling that something bad is always about to happen. We work on the thoughts underneath and the tension your body is holding, using CBT, mindfulness and EMDR where earlier experiences are keeping the alarm switched on.",
-    },
-    {
-      title: "Burnout & Perfectionism",
-      body: "For entrepreneurs, creatives and professionals carrying a high internal pressure that hasn’t let up in years. Therapy becomes a place to slow down, reconnect with yourself, and build a way of living and working that doesn’t require you to run yourself down.",
-    },
-    {
-      title: "Trauma & Its Aftermath",
-      body: "Single-incident trauma as well as longer, complex patterns rooted in childhood, relationships or chronic stress. We move carefully — safety and stabilisation first, so you feel more regulated in daily life and not only during sessions.",
-    },
-  ],
-};
-
 export const pullQuote = {
   text: "You don’t have to keep functioning to deserve help. Something quieter, steadier and more your own is worth working toward.",
 };

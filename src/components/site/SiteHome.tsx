@@ -8,14 +8,12 @@ import { Office } from "./Office";
 import { Expertise, PullQuote } from "./PullQuote";
 import { Services } from "./Services";
 import { SiteLayout } from "./SiteLayout";
-import { WhoWeHelp } from "./WhoWeHelp";
 
 export function SiteHome() {
   return (
     <SiteLayout>
       <Hero />
       <Intro />
-      <WhoWeHelp />
       <PullQuote />
       <Expertise />
       <About />

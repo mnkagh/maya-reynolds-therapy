@@ -414,6 +414,21 @@ html {
   );
 }
 
+/* Optional hover response for a panel: the artwork breathes on pointer-over. */
+.art-hover .art-rings,
+.art-hover .art-arcs,
+.art-hover .art-strata,
+.art-hover .art-light {
+  transition: transform 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.art-hover:hover .art-rings,
+.art-hover:hover .art-arcs,
+.art-hover:hover .art-strata,
+.art-hover:hover .art-light {
+  transform: scale(1.07);
+}
+
 /* ==========================================================================
    3D INTERACTIVITY
    Cards tilt in 3D on hover, giving the flat layout depth. The effect is
@@ -447,13 +462,34 @@ html {
   animation: drift 9s ease-in-out infinite;
 }
 
+/* Slow orbital accent — a dashed ring that turns behind the hero artwork. */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-slow {
+  animation: spin-slow 28s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tilt-3d,
-  .drift {
+  .drift,
+  .spin-slow {
     transition: none;
     animation: none;
   }
   .tilt-3d:hover {
     transform: none;
+  }
+  .art-hover .art-rings,
+  .art-hover .art-arcs,
+  .art-hover .art-strata,
+  .art-hover .art-light {
+    transition: none;
   }
 }

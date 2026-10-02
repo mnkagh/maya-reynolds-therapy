@@ -11,7 +11,10 @@ import { ThemeProvider } from "./ThemeProvider";
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider>
-      <div className="theme-root theme-maya flex min-h-screen flex-col bg-[var(--c-bg)]">
+      <div
+        id="top"
+        className="theme-root theme-maya flex min-h-screen flex-col bg-[var(--c-bg)]"
+      >
         <AnnouncementBar />
         <Header />
         <main id="main" className="flex-1">{children}</main>

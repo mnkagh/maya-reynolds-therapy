@@ -112,7 +112,15 @@ export function ContactPage() {
           </div>
 
           <div className="lg:col-span-5">
-            <h2 className="eyebrow text-muted">The office</h2>
+            <div className="overflow-hidden rounded-3xl border border-line bg-[var(--c-surface)]">
+              <Image
+                src={contactIcon}
+                alt="Contact Dr. Maya Reynolds to book a consultation"
+                className="h-auto w-full"
+              />
+            </div>
+
+            <h2 className="eyebrow mt-8 text-muted">The office</h2>
             <address className="mt-5 space-y-2.5 text-[0.95rem] not-italic">
               <div>{brand.address}</div>
               <div>{brand.cityStateZip}</div>
@@ -121,14 +129,6 @@ export function ContactPage() {
               In-person sessions in Santa Monica, or secure telehealth from
               anywhere in California.
             </p>
-
-            <div className="mt-8 overflow-hidden rounded-3xl border border-line bg-[var(--c-surface)]">
-              <Image
-                src={contactIcon}
-                alt="Contact Dr. Maya Reynolds to book a consultation"
-                className="h-auto w-full"
-              />
-            </div>
           </div>
         </div>
       </Container>
