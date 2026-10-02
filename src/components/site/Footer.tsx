@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { brand, footer, nav } from "@/content/maya";
+import { brand, footer } from "@/content/maya";
 
 export function Footer() {
   return (
@@ -64,22 +64,6 @@ export function Footer() {
               <div>{brand.address}</div>
               <div>{brand.cityStateZip}</div>
             </address>
-          </div>
-
-          <div>
-            <h3 className="eyebrow text-muted">Areas of care</h3>
-            <ul className="mt-5 space-y-2.5 text-[0.95rem]">
-              {nav
-                .filter((n) => n.folder)
-                .flatMap((n) => n.folder ?? [])
-                .map((child) => (
-                  <li key={child.label}>
-                    <a href={child.href} className="line-link text-muted">
-                      {child.label}
-                    </a>
-                  </li>
-                ))}
-            </ul>
           </div>
         </div>
 

@@ -21,21 +21,10 @@ export const announcement = {
 };
 
 export const nav = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services", folder: null },
-  {
-    label: "Approach",
-    href: "#approach",
-    folder: [
-      { label: "Anxiety & Panic", href: "#services" },
-      { label: "Trauma & EMDR", href: "#services" },
-      { label: "Burnout & Perfectionism", href: "#services" },
-      { label: "How I Work", href: "#approach" },
-    ],
-  },
-  { label: "Our Office", href: "#office" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Our Office", href: "/#office" },
   { label: "FAQs", href: "/faqs" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const hero = {
@@ -211,10 +200,9 @@ export const footer = {
     "Getting started is simple. You’re welcome to come into my office in Santa Monica, or meet with me securely online from anywhere in California — whichever works best for you.",
   navigate: [
     { label: "Home", href: "/" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Our Office", href: "#office" },
+    { label: "About", href: "/#about" },
+    { label: "Services", href: "/#services" },
+    { label: "Our Office", href: "/#office" },
     { label: "FAQs", href: "/faqs" },
-    { label: "Contact", href: "/contact" },
   ],
 };
