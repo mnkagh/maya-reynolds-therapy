@@ -16,7 +16,7 @@ export function Office() {
     >
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-6" data-reveal>
+          <div className="lg:col-span-5" data-reveal>
             <h2 className="display text-[clamp(2.25rem,5vw,4rem)]">
               {office.label}.
             </h2>
@@ -31,14 +31,14 @@ export function Office() {
             </address>
           </div>
 
-          <div className="lg:col-span-6" data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
-            <div className="grid gap-4 sm:grid-cols-2">
+          <div className="lg:col-span-7" data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
+            <div className="grid gap-5 sm:grid-cols-2">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[var(--c-surface-2)]">
                 <Image
                   src={officeOne}
                   alt="The counselling room in the Santa Monica office — exposed brick, a grey sofa, a soft rug and sheer curtains filtering afternoon light"
                   fill
-                  sizes="(min-width: 1024px) 28vw, 90vw"
+                  sizes="(min-width: 1024px) 32vw, 90vw"
                   className="object-cover"
                 />
               </div>
@@ -47,7 +47,7 @@ export function Office() {
                   src={officeTwo}
                   alt="A second view of the office — a leather chair, a glass coffee table, warm wood flooring and a low bookshelf"
                   fill
-                  sizes="(min-width: 1024px) 28vw, 90vw"
+                  sizes="(min-width: 1024px) 32vw, 90vw"
                   className="object-cover"
                 />
               </div>

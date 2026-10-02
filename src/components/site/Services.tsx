@@ -7,13 +7,14 @@ export function Services() {
   return (
     <section
       id="services"
-      className="scroll-mt-28 bg-[var(--c-surface-2)] py-14 sm:py-16 lg:py-16"
+      className="scroll-mt-28 bg-[var(--c-primary)] py-14 text-[var(--c-on-primary)] sm:py-16 lg:py-16"
     >
       <Container>
         <div data-reveal className="max-w-3xl">
-          <h2 className="display text-[clamp(1.875rem,3.6vw,3rem)]">
+          <h2 className="display text-[clamp(2.25rem,5vw,4rem)]">Services.</h2>
+          <h3 className="display mt-5 text-[clamp(1.25rem,2.4vw,1.75rem)]">
             {services.heading}
-          </h2>
+          </h3>
         </div>
 
         <div className="mt-14 grid gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
@@ -21,10 +22,9 @@ export function Services() {
             <article
               key={item.id}
               id={item.id}
-              data-tilt
               data-reveal
               style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
-              className="group depth relative flex scroll-mt-32 flex-col overflow-hidden rounded-3xl border border-line bg-[var(--c-surface)] hover:shadow-[0_40px_80px_-50px_rgba(34,32,29,0.6)]"
+              className="group relative flex scroll-mt-32 flex-col overflow-hidden rounded-3xl border border-line bg-[var(--c-surface)] text-[var(--c-ink)] transition-[border-color,box-shadow] duration-500"
             >
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-[var(--c-surface-2)]">
                 <Image
@@ -32,7 +32,7 @@ export function Services() {
                   alt={item.title}
                   fill
                   sizes="(min-width: 1024px) 33vw, 90vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover"
                 />
               </div>
 
@@ -48,8 +48,6 @@ export function Services() {
                   Request an appointment
                 </a>
               </div>
-
-              <span className="glare" aria-hidden />
             </article>
           ))}
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * One script for every pointer-driven effect on the page.
@@ -14,7 +15,30 @@ import { useEffect } from "react";
 const clamp = (n: number, min: number, max: number) =>
   Math.min(Math.max(n, min), max);
 
+/**
+ * `:target` covers hard loads with a hash, but client-side navigation
+ * (pushState) does not update it — so the destination service card gets
+ * an `.is-target` class instead, styled identically in globals.css.
+ */
+function markHashTarget() {
+  document
+    .querySelectorAll("#services article.is-target")
+    .forEach((el) => el.classList.remove("is-target"));
+
+  const hash = decodeURIComponent(window.location.hash.slice(1));
+  if (!hash) return;
+  const el = document.getElementById(hash);
+  if (el && el.matches("#services article")) el.classList.add("is-target");
+}
+
 export function Interaction() {
+  const pathname = usePathname();
+
+  /* Cross-page hash links (e.g. /faqs → /#service-anxiety): the card only
+     exists once the home page has rendered, so mark it after navigation. */
+  useEffect(() => {
+    markHashTarget();
+  }, [pathname]);
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -190,8 +214,30 @@ export function Interaction() {
 
     window.addEventListener("pointermove", onPointerMove, { passive: true });
     window.addEventListener("pointerdown", onPress, { passive: true });
+    /* ---------------------------------------------------------------- *
+     * Hash links: highlight the destination service card on click, and
+     * re-sync on back/forward (pushState does not fire popstate, but
+     * real fragment navigations and history moves do).
+     * ---------------------------------------------------------------- */
+    const onLinkClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>(
+        "a[href]",
+      );
+      if (!anchor) return;
+      const url = new URL(anchor.href, window.location.href);
+      if (!url.hash || url.pathname !== window.location.pathname) return;
+      const el = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+      if (!el || !el.matches("#services article")) return;
+      document
+        .querySelectorAll("#services article.is-target")
+        .forEach((n) => n.classList.remove("is-target"));
+      el.classList.add("is-target");
+    };
+
     window.addEventListener("pointerup", onRelease, { passive: true });
     window.addEventListener("maya:refresh", sweep);
+    document.addEventListener("click", onLinkClick);
+    window.addEventListener("popstate", markHashTarget);
 
     return () => {
       cancelAnimationFrame(parallaxRaf);
@@ -201,6 +247,8 @@ export function Interaction() {
       window.removeEventListener("pointerdown", onPress);
       window.removeEventListener("pointerup", onRelease);
       window.removeEventListener("maya:refresh", sweep);
+      document.removeEventListener("click", onLinkClick);
+      window.removeEventListener("popstate", markHashTarget);
       root.style.removeProperty("--scroll-progress");
     };
   }, []);

@@ -504,6 +504,33 @@ html {
   opacity: 1;
 }
 
+/* A service card lights up when it is the destination of an in-page link,
+   e.g. the header dropdown jumping to #service-anxiety. `:target` covers
+   hard loads; `.is-target` is added by Interaction.tsx for client-side
+   navigation, where pushState does not update `:target`. */
+#services article:target,
+#services article.is-target {
+  border-color: var(--c-secondary);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--c-secondary) 30%, transparent),
+    0 40px 80px -50px rgba(34, 32, 29, 0.6);
+  animation: target-pulse 1.6s ease-in-out 1;
+}
+
+@keyframes target-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 4px color-mix(in srgb, var(--c-secondary) 30%, transparent),
+      0 40px 80px -50px rgba(34, 32, 29, 0.6);
+  }
+  50% {
+    box-shadow:
+      0 0 0 9px color-mix(in srgb, var(--c-secondary) 45%, transparent),
+      0 40px 80px -50px rgba(34, 32, 29, 0.6);
+  }
+}
+
 /* Elements rise and un-tilt as they enter the viewport. The individual
    `translate` / `rotate` / `scale` properties are used rather than
    `transform`, so a reveal can sit on the same element as a pointer tilt
@@ -710,6 +737,10 @@ html {
   .orbit,
   .pulse-core {
     transition: none;
+    animation: none;
+  }
+  #services article:target,
+  #services article.is-target {
     animation: none;
   }
   [data-reveal] {
