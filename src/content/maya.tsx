@@ -112,7 +112,6 @@ export const howWeWork = {
 /** The three service areas from the profile, each with a supplied image. */
 export const services = {
   heading: "Honouring where you’ve been, and helping shape where you’re headed.",
-  subheading: "Areas I work with",
   items: [
     {
       id: "service-anxiety",
@@ -177,12 +176,6 @@ export const office = {
   body: "My office is a calm, private space on 123th Street 45 W in Santa Monica — natural light, warm wood floors and comfortable seating, with nothing clinical about it. The room is deliberately uncluttered so that the moment you arrive, there is nothing to perform and nowhere to rush to.",
   second:
     "Clients often tell me the space itself does some of the work of settling them, before we have said a word. Many of the conversations that matter most happen here, sitting down, at a pace that lets you think properly.",
-  details: [
-    "Private, sound-treated room with a comfortable seat for each of you",
-    "Natural light and an uncluttered, grounding environment",
-    "Street-level access in Santa Monica, with easy parking nearby",
-    "In-person in Santa Monica, or secure telehealth from anywhere in California",
-  ],
 };
 
 /** FAQ — every answer traceable to the profile. */

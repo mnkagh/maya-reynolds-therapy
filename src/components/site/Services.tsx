@@ -10,21 +10,10 @@ export function Services() {
       className="scroll-mt-28 bg-[var(--c-surface-2)] py-14 sm:py-16 lg:py-16"
     >
       <Container>
-        <div className="grid gap-8 lg:grid-cols-12">
-          <div data-reveal className="lg:col-span-7">
-            <h2 className="display text-[clamp(1.875rem,3.6vw,3rem)]">
-              {services.heading}
-            </h2>
-          </div>
-          <div
-            data-reveal
-            style={{ "--reveal-delay": "100ms" } as React.CSSProperties}
-            className="flex items-end lg:col-span-5"
-          >
-            <p className="eyebrow text-[var(--c-secondary)]">
-              {services.subheading}
-            </p>
-          </div>
+        <div data-reveal className="max-w-3xl">
+          <h2 className="display text-[clamp(1.875rem,3.6vw,3rem)]">
+            {services.heading}
+          </h2>
         </div>
 
         <div className="mt-14 grid gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">

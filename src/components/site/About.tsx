@@ -10,13 +10,13 @@ export function About() {
       <Container>
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-[var(--c-surface-2)]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[var(--c-surface-2)]">
               <Image
                 src={portrait}
                 alt="Dr. Maya Reynolds, PsyD, smiling, photographed in her Santa Monica office"
                 fill
                 sizes="(min-width: 1024px) 40vw, 90vw"
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
           </div>
@@ -37,13 +37,6 @@ export function About() {
 
             <p className="lede mt-9 max-w-2xl">{about.body}</p>
             <p className="body-copy mt-6 max-w-2xl text-muted">{about.body2}</p>
-
-            <a
-              href="#approach"
-              className="btn-line mt-9 font-medium text-[var(--c-secondary)]"
-            >
-              {about.cta}
-            </a>
           </div>
         </div>
       </Container>

@@ -28,7 +28,7 @@ export function Header() {
       <header className="sticky top-0 z-40 border-b border-line/70 bg-[var(--c-bg)]/90 backdrop-blur-md">
         <div className="mx-auto flex w-full max-w-[88rem] items-center justify-between gap-6 px-6 py-5 sm:px-10 lg:px-16">
           <Link
-            href="#top"
+            href="/"
             className="flex flex-col no-underline"
             aria-label="Dr. Maya Reynolds, PsyD — home"
           >

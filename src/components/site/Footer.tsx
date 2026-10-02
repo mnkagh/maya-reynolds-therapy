@@ -8,7 +8,11 @@ export function Footer() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div data-reveal className="lg:col-span-5">
-            <span className="flex flex-col leading-none">
+            <Link
+              href="/"
+              className="inline-flex flex-col leading-none no-underline"
+              aria-label="Dr. Maya Reynolds, PsyD — home"
+            >
               <span className="display text-[1.5rem] leading-none text-[var(--c-on-primary)]">
                 {brand.name}
               </span>
@@ -18,7 +22,7 @@ export function Footer() {
               >
                 {brand.role}
               </span>
-            </span>
+            </Link>
 
             <p className="body-copy mt-8 max-w-sm text-[0.95rem] text-[var(--c-on-primary-muted)]">
               {footer.blurb}
