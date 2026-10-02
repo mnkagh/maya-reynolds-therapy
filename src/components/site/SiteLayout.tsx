@@ -1,6 +1,7 @@
 import { AnnouncementBar } from "./Hero";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { Interaction } from "./Interaction";
 import { ThemeProvider } from "./ThemeProvider";
 
 /**
@@ -17,8 +18,14 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       >
         <AnnouncementBar />
         <Header />
-        <main id="main" className="flex-1">{children}</main>
+        <div aria-hidden className="progress-track pointer-events-none">
+          <div className="progress-bar" />
+        </div>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <Footer />
+        <Interaction />
       </div>
     </ThemeProvider>
   );

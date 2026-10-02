@@ -30,10 +30,10 @@ export const nav = [
     label: "Services",
     href: "/#services",
     folder: [
-      { label: "Anxiety & Panic", href: "/#services" },
-      { label: "Trauma & EMDR", href: "/#services" },
-      { label: "Burnout & Perfectionism", href: "/#services" },
-      { label: "How I Work", href: "/#services" },
+      { label: "Anxiety & Panic", href: "/#service-anxiety" },
+      { label: "Trauma & EMDR", href: "/#service-emdr" },
+      { label: "Burnout & Perfectionism", href: "/#service-burnout" },
+      { label: "How I Work", href: "/#approach" },
     ],
   },
   { label: "Our Office", href: "/#office" },
@@ -67,6 +67,7 @@ export const pullQuote = {
 
 export const expertise = {
   heading: "What I work with",
+  lead: "Hover or tap anything below — it is the same list she works with, arranged as a field rather than a column.",
   items: [
     "Anxiety",
     "Panic",
@@ -114,22 +115,60 @@ export const services = {
   subheading: "Areas I work with",
   items: [
     {
+      id: "service-anxiety",
       title: "Anxiety & Panic Therapy",
+      short: "Anxiety & Panic",
       body: "For anxiety that has quietly taken over your calendar. We work on the patterns of thought underneath it and the physical tension that comes with them, using CBT and mindfulness-based tools — and EMDR when earlier experiences are keeping your nervous system on alert.",
       image: serviceOne,
     },
     {
+      id: "service-emdr",
       title: "Trauma Recovery with EMDR",
+      short: "Trauma & EMDR",
       body: "EMDR is a well-researched approach that helps the brain process painful memories so they stop replaying on their own schedule. I use it for both single-incident trauma and longer patterns, always moving at a pace where you feel stable, safe and in control of the work.",
       image: serviceTwo,
     },
     {
+      id: "service-burnout",
       title: "Burnout & Perfectionism",
+      short: "Burnout & Perfectionism",
       body: "For people whose exhaustion has quietly become the baseline. We look at where the pressure comes from, what your internal standards are costing you, and how to build a professional and personal life that doesn’t depend on pushing through.",
       image: serviceThree,
     },
   ],
 };
+
+/**
+ * The four methods named in her bio, given a line each so the approach
+ * section can present them as something the visitor explores rather than
+ * a list to read past. All four come from the profile.
+ */
+export const methods = [
+  {
+    id: "cbt",
+    name: "Cognitive behavioural therapy",
+    abbr: "CBT",
+    note: "For the thoughts underneath the feeling — noticing the patterns, testing them, and finding something more workable.",
+  },
+  {
+    id: "emdr",
+    name: "EMDR",
+    abbr: "EMDR",
+    note: "Helps the brain process painful memories so they stop replaying on their own schedule.",
+  },
+  {
+    id: "mindfulness",
+    name: "Mindfulness-based practice",
+    abbr: "Mindfulness",
+    note: "Slowing the pace enough that you can stay with a feeling instead of being swept by it.",
+  },
+  {
+    id: "body",
+    name: "Body-oriented techniques",
+    abbr: "Body-based",
+    note: "Working the physiological side of stress, so change lasts outside the therapy room.",
+  },
+];
 
 /** Part 3 — the custom section. Uses the office photos from the profile. */
 export const office = {
@@ -191,7 +230,12 @@ export const footer = {
     { label: "Home", href: "/" },
     { label: "About", href: "/#about" },
     { label: "Services", href: "/#services" },
-    { label: "Our Office", href: "/#office" },
+    { label: "How I work", href: "/#approach" },
+    { label: "Our office", href: "/#office" },
     { label: "FAQs", href: "/faqs" },
   ],
+  areas: services.items.map((item) => ({
+    label: item.short,
+    href: `/#${item.id}`,
+  })),
 };

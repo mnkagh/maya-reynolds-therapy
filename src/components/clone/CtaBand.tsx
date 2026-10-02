@@ -7,7 +7,7 @@ import { Plate } from "./Plate";
  */
 export function CtaBand() {
   return (
-    <section className="bg-[var(--c-bg)] py-[7%]">
+    <section id="contact" className="scroll-mt-28 bg-[var(--c-bg)] py-[7%]">
       <div className="lg:grid lg:grid-cols-[11.8fr_53.4fr_34.8fr] lg:items-center">
         <div className="px-[5vw] lg:px-0">
           <Plate

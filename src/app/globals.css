@@ -326,15 +326,21 @@ html {
    ART PANELS
    Abstract, palette-driven compositions used in place of stock photography.
    Each variant maps to a service so imagery stays intentional.
+
+   Declared inside @layer components on purpose: `.art` sets `position`,
+   `width` and `height`, and without the layer a caller could never position
+   a panel with Tailwind utilities (`absolute`, `inset-*`, `h-full`) because
+   unlayered CSS beats the utilities layer.
    ========================================================================== */
 
-.art {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  isolation: isolate;
-}
+@layer components {
+  .art {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    isolation: isolate;
+  }
 
 .art::after {
   content: "";
@@ -428,26 +434,194 @@ html {
 .art-hover:hover .art-light {
   transform: scale(1.07);
 }
+}
 
 /* ==========================================================================
    3D INTERACTIVITY
-   Cards tilt in 3D on hover, giving the flat layout depth. The effect is
-   transform-only so it stays cheap and respects reduced-motion.
+   Everything below is transform/opacity only and driven by two custom
+   properties the pointer writes onto the element:
+     --rx / --ry   rotation in degrees
+     --mx / --my   pointer position inside the element, as a percentage
+   A single script in Interaction.tsx maintains them, so there is no
+   per-card React state and the page stays smooth.
    ========================================================================== */
 
-.tilt-3d {
+.scene {
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
+}
+
+.scene-soft {
+  perspective: 900px;
+}
+
+.depth {
+  transform-style: preserve-3d;
+}
+
+/* Scroll parallax. The script writes --parallax-y from the element's
+   distance from the viewport centre. */
+[data-parallax] {
+  translate: 0 var(--parallax-y, 0px);
+}
+
+/* Pointer tilt. Without a pointer (touch, reduced motion) it stays flat. */
+.tilt-3d,
+[data-tilt] {
+  transform:
+    perspective(1200px)
+    rotateX(var(--ry, 0deg))
+    rotateY(var(--rx, 0deg))
+    translateZ(0);
   transform-style: preserve-3d;
   transition:
-    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
-.tilt-3d:hover {
-  transform: perspective(1200px) rotateX(3deg) rotateY(-3deg) translateY(-6px);
+[data-tilt].is-pressing {
+  transition-duration: 0.12s;
 }
 
-/* Soft floating accent that drifts behind the hero portrait. */
+/* A soft highlight that tracks the pointer across the surface. */
+.glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    22rem circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 253, 250, 0.22),
+    transparent 62%
+  );
+  mix-blend-mode: soft-light;
+}
+
+[data-tilt]:hover .glare,
+[data-tilt].is-pressing .glare {
+  opacity: 1;
+}
+
+/* Elements rise and un-tilt as they enter the viewport. The individual
+   `translate` / `rotate` / `scale` properties are used rather than
+   `transform`, so a reveal can sit on the same element as a pointer tilt
+   without either one cancelling the other. Hidden states are scoped to
+   `.js` so a visitor without JavaScript still sees the whole page. */
+.js [data-reveal] {
+  opacity: 0;
+  translate: 0 38px;
+  rotate: x 6deg;
+  scale: 0.99;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    rotate 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    scale 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js [data-reveal].is-in {
+  opacity: 1;
+  translate: 0 0;
+  rotate: x 0deg;
+  scale: 1;
+}
+
+/* Magnetic buttons: the script nudges them toward the pointer. */
+[data-magnetic] {
+  transform: translate3d(
+    calc(var(--mag-x, 0) * 1px),
+    calc(var(--mag-y, 0) * 1px),
+    0
+  );
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+[data-magnetic]:active {
+  transition-duration: 0.1s;
+}
+
+/* Custom cursor. Only mounted for fine pointers. */
+.cursor-ring,
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  pointer-events: none;
+  border-radius: 9999px;
+  will-change: transform;
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid color-mix(in srgb, var(--c-secondary) 70%, transparent);
+  transition:
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    margin 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.35s ease,
+    opacity 0.3s ease;
+}
+
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  background: var(--c-secondary);
+  transition: opacity 0.3s ease;
+}
+
+.cursor-ring.is-hot {
+  width: 62px;
+  height: 62px;
+  margin: -31px 0 0 -31px;
+  background: color-mix(in srgb, var(--c-secondary) 12%, transparent);
+}
+
+.cursor-ring.is-hidden,
+.cursor-dot.is-hidden {
+  opacity: 0;
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor a,
+html.has-custom-cursor button,
+html.has-custom-cursor [role="button"] {
+  cursor: none;
+}
+
+/* Reading progress along the top edge. */
+.progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  background: transparent;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 100%;
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: 0 50%;
+  background: linear-gradient(
+    90deg,
+    var(--c-secondary),
+    var(--c-accent)
+  );
+}
+
+/* Soft floating accent that drifts behind the hero artwork. */
 @keyframes drift {
   0%,
   100% {
@@ -476,14 +650,128 @@ html {
   animation: spin-slow 28s linear infinite;
 }
 
+/* ==========================================================================
+   ORBITS — concentric rings standing in the XY plane, tipped back so they
+   read as 3D. Each ring carries its own duration and direction, which is
+   what makes the hero feel like it is turning rather than animating.
+   ========================================================================== */
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--c-bg) 22%, transparent);
+  transform-style: preserve-3d;
+  animation: orbit-spin var(--orbit-duration, 24s) linear infinite;
+  animation-direction: var(--orbit-direction, normal);
+  will-change: transform;
+}
+
+/* A marker riding the ring, so the rotation is legible. */
+.orbit::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--c-bg) 55%, transparent);
+}
+
+.orbit-dashed {
+  border-style: dashed;
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotateX(var(--orbit-tilt, 66deg))
+      rotateZ(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(var(--orbit-tilt, 66deg))
+      rotateZ(360deg);
+  }
+}
+
+/* Breathing core at the centre of the orbit field. */
+@keyframes pulse-core {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+.pulse-core {
+  animation: pulse-core 7s ease-in-out infinite;
+}
+
+/* Floating chips around the hero field. */
+@keyframes chip-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+.chip-float {
+  animation: chip-float 6.5s ease-in-out infinite;
+  animation-delay: var(--chip-delay, 0ms);
+}
+
+/* ==========================================================================
+   EXPERTISE FIELD — terms sit on a shallow 3D plane and lift toward the
+   viewer as they are hovered or focused.
+   ========================================================================== */
+
+.field {
+  transform-style: preserve-3d;
+}
+
+.chip {
+  transform: translate3d(0, 0, var(--chip-z, 0px)) rotateX(var(--chip-rx, 0deg));
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
+}
+
+.chip:hover,
+.chip:focus-visible,
+.chip.is-active {
+  --chip-z: 26px;
+  --chip-rx: -6deg;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tilt-3d,
+  [data-tilt],
   .drift,
-  .spin-slow {
+  .spin-slow,
+  .orbit,
+  .pulse-core {
     transition: none;
     animation: none;
   }
-  .tilt-3d:hover {
+  [data-reveal] {
+    opacity: 1;
+    translate: none;
+    rotate: none;
+    scale: none;
+    transition: none;
+  }
+  [data-magnetic] {
     transform: none;
   }
   .art-hover .art-rings,

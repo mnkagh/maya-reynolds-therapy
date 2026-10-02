@@ -69,6 +69,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${newsreader.variable} ${dmSans.variable} ${caveat.variable} ${fraunces.variable} ${karla.variable} antialiased`}
     >
       <body className="min-h-full">
+        <Script id="maya-js-flag" strategy="beforeInteractive">
+          {`document.documentElement.classList.add('js')`}
+        </Script>
         <Script id="maya-theme-init" strategy="beforeInteractive">
           {`try{if(localStorage.getItem('maya-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}`}
         </Script>
