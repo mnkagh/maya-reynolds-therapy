@@ -24,6 +24,7 @@ function markHashTarget() {
   document
     .querySelectorAll("#services article.is-target")
     .forEach((el) => el.classList.remove("is-target"));
+  window.dispatchEvent(new CustomEvent("maya:clear-selection"));
 
   const hash = decodeURIComponent(window.location.hash.slice(1));
   if (!hash) return;
@@ -231,6 +232,7 @@ export function Interaction() {
       document
         .querySelectorAll("#services article.is-target")
         .forEach((n) => n.classList.remove("is-target"));
+      window.dispatchEvent(new CustomEvent("maya:clear-selection"));
       el.classList.add("is-target");
     };
 

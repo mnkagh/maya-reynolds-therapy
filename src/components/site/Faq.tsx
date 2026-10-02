@@ -12,12 +12,12 @@ export function Faq() {
   return (
     <section
       id="faqs"
-      className="scroll-mt-28 bg-[var(--c-primary)] py-14 text-[var(--c-on-primary)] sm:py-16 lg:py-16"
+      className="scroll-mt-28 bg-[var(--c-surface-2)] py-14 sm:py-16 lg:py-16"
     >
       <Container>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4" data-reveal>
-            <p className="eyebrow" style={{ color: "var(--c-accent)" }}>
+            <p className="eyebrow" style={{ color: "var(--c-secondary)" }}>
               FAQs
             </p>
             <h2 className="display mt-5 text-[clamp(2.25rem,5vw,4rem)]">
@@ -26,15 +26,12 @@ export function Faq() {
             <h3 className="display mt-5 text-[clamp(1.25rem,2.4vw,1.75rem)]">
               {faqs.heading}
             </h3>
-            <p
-              className="body-copy mt-6 text-[0.95rem]"
-              style={{ color: "var(--c-on-primary-muted)" }}
-            >
+            <p className="body-copy mt-6 text-[0.95rem] text-muted">
               Anything else you’re wondering about, just ask — there’s no such
               thing as a silly question before your first session.
             </p>
 
-            <div className="relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[var(--c-surface-2)]">
+            <div className="relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[var(--c-surface)]">
               <Image
                 src={faqImage}
                 alt="The waiting area of the Santa Monica office"
@@ -52,7 +49,7 @@ export function Faq() {
                 return (
                   <div
                     key={item.q}
-                    className="border-b border-[var(--c-on-primary)]/20 first:border-t"
+                    className="border-b border-line first:border-t"
                   >
                     <dt>
                       <button
@@ -63,12 +60,12 @@ export function Faq() {
                         id={`faq-button-${i}`}
                         className="group flex w-full items-start justify-between gap-6 py-6 text-left"
                       >
-                        <span className="display text-[1.125rem] transition-colors group-hover:text-[var(--c-accent)] sm:text-[1.25rem]">
+                        <span className="display text-[1.125rem] transition-colors group-hover:text-[var(--c-secondary)] sm:text-[1.25rem]">
                           {item.q}
                         </span>
                         <span
                           aria-hidden
-                          className="relative mt-2.5 block h-3.5 w-3.5 shrink-0 text-[var(--c-accent)]"
+                          className="relative mt-2.5 block h-3.5 w-3.5 shrink-0 text-[var(--c-secondary)]"
                         >
                           <span className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-current" />
                           <span
@@ -86,10 +83,7 @@ export function Faq() {
                       hidden={!isOpen}
                       className="pb-7"
                     >
-                      <p
-                        className="body-copy max-w-2xl text-[0.95rem]"
-                        style={{ color: "var(--c-on-primary-muted)" }}
-                      >
+                      <p className="body-copy max-w-2xl text-[0.95rem] text-muted">
                         {item.a}
                       </p>
                     </dd>
