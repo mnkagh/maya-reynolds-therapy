@@ -17,10 +17,7 @@ export function Faq() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4" data-reveal>
-            <p className="eyebrow" style={{ color: "var(--c-secondary)" }}>
-              FAQs
-            </p>
-            <h2 className="display mt-5 text-[clamp(2.25rem,5vw,4rem)]">
+            <h2 className="display text-[clamp(2.25rem,5vw,4rem)]">
               FAQs.
             </h2>
             <h3 className="display mt-5 text-[clamp(1.25rem,2.4vw,1.75rem)]">
